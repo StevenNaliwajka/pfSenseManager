@@ -8,11 +8,10 @@ mkdir -p "$TARGET_DIR"
 
 # Define the JSON content
 read -r -d '' JSON_CONTENT << 'EOF'
-defaults:
-  dns_servers:
-    - 1.1.1.1
-    - 9.9.9.9
-  lan_interface: igb0
+global:
+  - dns_resolver: enable
+    server_backend: kea dhcp  # /system/advanced/networking
+    dns_query_forwarding: enable # /services/dns resolver/general settings
 
 EOF
 
